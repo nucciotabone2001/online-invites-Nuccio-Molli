@@ -336,72 +336,6 @@ body{
   }
 }
 
-/* ------------------------------
-   DIRECTIONS SECTION
------------------------------- */
-
-
-
-
-/* SEZIONE ALLOGGI */
-#accommodation {
-  padding: 60px 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.accommodation-inner {
-  max-width: 600px;
-  width: 100%;
-  text-align: center;
-  color: #ffffff;
-}
-
-#accommodation h2 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-.accommodation-note {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-}
-
-/* Lista hotel */
-.hotels-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.hotel-item h3 {
-  font-size: 1.4rem;
-  margin-bottom: 6px;
-}
-
-.hotel-distance {
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.hotel-description {
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-.hotel-link {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 10px 18px;
-  background: #4E513B;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.hotel-link:hover {
-  background: #3c3f2f;
-}
 
 
 /* ------------------------------
@@ -429,7 +363,7 @@ body{
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.28); /* più leggero */
+  background: rgba(0,0,0,0.30); /* più leggero */
   z-index: 1;
 }
 
@@ -438,12 +372,10 @@ body{
   
   position: relative;
   z-index: 2;
-
   max-width: 420px; /* molto più piccolo */
   width: 100%;
   text-align: center;
   color: #ffffff;
-  
   padding: 22px 18px; /* ridotto */
   background: rgba(255,255,255,0.05); /* più trasparente */
   backdrop-filter: blur(2px);
@@ -455,13 +387,13 @@ body{
   font-family: "sloop-script-one", sans-serif; 
   font-weight: 400; 
   font-style: normal;
-  font-size: 3.6rem; /* più piccolo */
+  font-size: 3.0rem; /* più piccolo */
   margin-bottom: 10px;
   
 }
 
 .generosity-text {
-  font-size: 0.95rem; /* più piccolo */
+  font-size: 1rem; /* più piccolo */
   line-height: 1.45;
   margin-bottom: 22px;
 }
@@ -480,6 +412,24 @@ body{
 .generosity-btn:hover {
   background: #e6e6e6;
 }
+
+/* Pulsante indietro */
+.rsvp-back {
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #24341b;
+  color: #24341b;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 20px auto 0;
+  transition: 0.3s ease;
+}
+
+.rsvp-back:hover {
+  background: #24341b;
+  color: #ffffff;
+}
+
 
 /* ------------------------------
    DESKTOP

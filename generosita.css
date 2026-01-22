@@ -10,7 +10,7 @@ body {
   color: #24341b;      /* verde scuro coerente */
   font-family: "acumin-pro", sans-serif;
   text-align: center;
-  background-color: #d9cda9;
+  background-color: #ffffff;
 }
 
 /* Wrapper centrale */
@@ -36,6 +36,7 @@ h1 {
   max-width: 340px;
   margin: 0 auto 20px;
   opacity: 0.9;
+  font-weight: 400;
 }
 
 /* Titoli sezioni */
