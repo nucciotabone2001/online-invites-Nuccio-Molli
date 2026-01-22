@@ -41,13 +41,21 @@ h1 {
 
 /* Titoli sezioni */
 .section-title,
-.section-text,
 .bible-verse {
   text-align: center;
   text-justify: inter-word;
   margin-top: 40px;
   margin-bottom: 12px;
   font-weight: 600;
+  color: #24341b;
+}
+
+.section-text{
+  text-align: center;
+  text-justify: inter-word;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  font-weight: 400;
   color: #24341b;
 }
 
@@ -99,7 +107,6 @@ h1 {
 /* Testo finale */
 .closing {
   margin-top: 40px;
-  font-size: 1.15rem;
   line-height: 1.6;
   color: #24341b;
   opacity: 0.9;
