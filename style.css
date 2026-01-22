@@ -301,7 +301,7 @@ body {
 /* link che contiene l'immagine */
 .info-link {
   display: block;
-  width: 80%;
+  width: 85%;
   max-width: 420px;           /* dimensione massima su mobile */
 }
 
