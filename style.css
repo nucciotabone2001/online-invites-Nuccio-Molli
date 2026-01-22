@@ -1,0 +1,484 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "cormorant-garamond", serif;
+  color: #365f3c;
+  background: #fff;
+  line-height: 1.4;
+  font-weight: 300; 
+  font-style: normal;
+}
+
+
+/* ------------------------------
+   NAVBAR MOBILE-FIRST
+------------------------------ */
+
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+/* LOGO */
+#logo img {
+  width: 24px;        /* rimpicciolito */
+  filter: brightness(0) invert(1); /* diventa bianco */
+  opacity: 0.95;       /* leggero soft touch */
+}
+
+/* HAMBURGER */
+#hamburger {
+  width: 28px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+#hamburger span {
+  height: 3px;
+  background: white;
+}
+
+/* MENU MOBILE */
+#main-nav {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: #24341B;
+  padding: 18px;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#main-nav a {
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #F7F6F0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#main-nav.open {
+  display: flex;
+}
+
+/* BACK LINK (solo pagine secondarie) */
+.back-link {
+  display: block;
+  margin-top: 80px;
+  margin-left: 20px;
+  color: #F7F6F0;
+  font-size: 1rem;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+/* ------------------------------
+   DESKTOP
+------------------------------ */
+@media (min-width: 768px) {
+
+  /* Nascondi hamburger */
+  #hamburger {
+    display: none;
+  }
+
+  /* Navbar orizzontale */
+  #main-nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: 40px;
+    background: transparent;
+    padding: 0;
+  }
+
+  #main-nav a {
+    color: #F7F6F0;
+    font-size: 0.8rem;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  /* Underline animato */
+  #main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+
+  #main-nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Back link più elegante su desktop */
+  .back-link {
+    margin-left: 40px;
+    font-size: 1.1rem;
+  }
+}
+
+
+/* ------------------------------
+   HERO (mobile)
+------------------------------ */
+#hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  background: url('elements/green hills.png') center/cover no-repeat;
+  position: relative;
+}
+
+
+
+
+/* immagine decorativa mobile: sotto al testo */
+.hero-decor {
+  position: absolute;
+  z-index: 1;
+  
+}
+
+.hero-decor img {
+  width:70%;
+  
+}
+
+/* DESKTOP VERSION */
+@media (min-width: 768px) {
+
+  #hero {
+    height: 100vh;
+    background-attachment: fixed; /* effetto parallax come prima */
+    background-position: center center;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  /* immagine decorativa come prima: assoluta, grande, centrata */
+  .hero-decor {
+    position: absolute;
+    top: 50%;                 /* posizione verticale come prima */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 900px;
+    z-index: 1;
+  }
+
+  .hero-decor img {
+    width: 60%;
+    height: auto;
+    opacity: 0.98;
+    border-radius: 8px;
+  }
+
+  /* testo sopra l’immagine */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+
+/* ------------------------------
+   DEDICATION SECTION (mobile-first)
+------------------------------ */
+#dedication {
+  background: #24341B;
+  padding: 40px 20px;        /* più aria */
+  text-align: center;
+  color: #F7F6F0;
+  /* height: 100vh;  RIMOSSO: impediva alla sezione di crescere */
+}
+
+.dedication-inner {
+  max-width: 600px;          /* più stretto = immagine e testo coerenti */
+  margin: 0 auto;
+}
+
+/* IMMAGINE */
+.dedication-image img {
+  width: 100%;
+  max-width: 320px;          /* proporzione perfetta con il testo */
+  height: auto;
+  margin: 0 auto 28px;
+  display: block;
+}
+
+/* TESTO */
+.dedication-text {
+  line-height: 1.55;
+  letter-spacing: 0.4px;
+  max-width: 320px;          /* MATCH con l'immagine */
+  margin: 0 auto;            /* centrato */
+}
+
+.dedication-text strong {
+  font-family: "sloop-script-one", sans-serif;
+  font-size: 2.35rem;
+  letter-spacing: 1px;
+}
+
+/* ------------------------------
+   DESKTOP
+------------------------------ */
+@media (min-width: 768px) {
+
+  #dedication {
+    padding: 70px 20px;     /* più elegante su desktop */
+  }
+
+  .dedication-inner {
+    max-width: 700px;
+  }
+
+  .dedication-image img {
+    max-width: 380px;        /* cresce leggermente */
+    margin-bottom: 36px;
+  }
+
+  .dedication-text {
+    font-size: 1.20rem;
+    line-height: 1.6;
+    max-width: 380px;        /* MATCH perfetto con immagine desktop */
+  }
+
+  .dedication-text strong {
+    font-size: 2.55rem;
+  }
+}
+
+
+
+/* ------------------------------
+   DETAILS (mobile)
+------------------------------ */
+#info-section {
+  background: #d9cda9;
+  height: 100vh;              /* occupa tutta la schermata */
+  width: 100%;
+  display: flex;
+  justify-content: center;    /* centra orizzontalmente */
+  align-items: center;        /* centra verticalmente */
+  box-sizing: border-box;
+}
+
+/* link che contiene l'immagine */
+.info-link {
+  display: block;
+  width: 80%;
+  max-width: 420px;           /* dimensione massima su mobile */
+}
+
+/* immagine */
+.info-link img {
+  width: 100%;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .info-link {
+    max-width: 450px;   /* o 700px, o 800px, scegli tu */
+  }
+
+  .info-link img {
+    width: 100%;
+    height: auto;       /* mantiene proporzioni perfette */
+    cursor: pointer;
+  }
+}
+
+/* ------------------------------
+   GENEROSITY MINI (mobile-first)
+------------------------------ */
+#generosity-mini {
+  padding: 100px 10px;          /* più aria */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 100%;
+  background: #24341b;          /* leggero beige elegante */
+}
+
+#generosity-mini .mini-card {
+  max-width: 700px;             /* più grande */
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+
+#generosity-mini h2 {
+  font-size: 2.4rem;            /* più importante */
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#generosity-mini .mini-note {
+  line-height: 1.55;
+  letter-spacing: 0.4px;
+  max-width: 320px;        
+  margin: 0 auto;   
+
+}
+
+#generosity-mini .mini-btn {
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  display: inline-block;
+  padding: 10px 20px;           /* più grande */
+  background: #65754a;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s ease;
+  margin-top: 20px;;
+}
+
+#generosity-mini .mini-btn:hover {
+  background: #24341B;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  #generosity-mini {
+    padding: 140px 20px;
+  }
+
+  #generosity-mini h2 {
+    font-size: 2.8rem;
+  }
+
+  #generosity-mini .mini-note {
+    font-size: 1.25rem;
+  }
+
+  #generosity-mini .mini-btn {
+    padding: 12px 26px;
+    font-size: 1.20rem;
+  }
+}
+
+
+/* ------------------------------
+   RSVP 
+------------------------------ */
+#RSVP-section {
+  height: 100vh;
+  width: 100%;
+  background-image: url('elements/abbraccio.jpg');
+  background-size: cover;
+  background-position:  60% center;   /* centrato su mobile e desktop */
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  padding-top: 10px;
+  position: relative;
+}
+
+/* OVERLAY NERO LEGGERO */
+#RSVP-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* 25% di oscuramento */
+  z-index: 1;
+}
+
+/* Assicuriamo che il contenuto stia sopra l’overlay */
+#RSVP-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* link con immagine sopra */
+.rsvp-link {
+  display: block;
+  width: 100%;
+  max-width: 420px;   /* più piccola su mobile */
+}
+
+
+/* link con immagine sopra */
+.rsvp-link {
+  display: block;
+  width: 90%;
+  max-width: 260px;   /* più piccola su mobile */
+  z-index: 2;
+}
+
+.rsvp-link img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+
+  #RSVP-section {
+    padding: 40px;
+    background-attachment: fixed; /* effetto parallax elegante */
+  }
+
+  .rsvp-link {
+    max-width: 390px;   /* più piccola rispetto ai 520px di prima */
+  }
+
+  .rsvp-link img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.25);
+  }
+}
+
+
+
+
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+footer {
+  background: #F7F6F0;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.9rem;
+}
+

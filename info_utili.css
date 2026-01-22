@@ -1,0 +1,512 @@
+body{
+  background-color: #24341b;
+  font-family: "cormorant-garamond", serif;
+  color: #ffffff;
+  line-height: 1.4;
+  font-weight: 300;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ------------------------------
+   NAVBAR MOBILE-FIRST
+------------------------------ */
+
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+/* LOGO */
+#logo img {
+  width: 24px;        /* rimpicciolito */
+  filter: brightness(0) invert(1); /* diventa bianco */
+  opacity: 0.95;       /* leggero soft touch */
+}
+
+
+/* HAMBURGER */
+#hamburger {
+  width: 28px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+#hamburger span {
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* MENU MOBILE */
+#main-nav {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: #4E513B;
+  padding: 18px;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#main-nav a {
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #F7F6F0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#main-nav.open {
+  display: flex;
+}
+
+/* BACK LINK (solo pagine secondarie) */
+.back-link {
+  display: block;
+  margin-top: 80px;
+  margin-left: 20px;
+  color: #F7F6F0;
+  font-size: 1rem;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+/* ------------------------------
+   DESKTOP
+------------------------------ */
+@media (min-width: 768px) {
+
+  /* Nascondi hamburger */
+  #hamburger {
+    display: none;
+  }
+
+  /* Navbar orizzontale */
+  #main-nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: 40px;
+    background: transparent;
+    padding: 0;
+  }
+
+  #main-nav a {
+    color: #F7F6F0;
+    font-size: 0.8rem;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  /* Underline animato */
+  #main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+
+  #main-nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Back link più elegante su desktop */
+  .back-link {
+    margin-left: 40px;
+    font-size: 1.1rem;
+  }
+}
+
+
+
+/* ------------------------------
+   INTRO SECTION
+------------------------------ */
+/* INTRO SECTION */
+
+#intro {
+  position: relative;
+  width: 100%;
+  height: 75vh; /* circa il 30% dello schermo */
+  min-height: 200px; /* per sicurezza su schermi piccoli */
+
+  background-image: url('elements/foto-del-posto-3.png');
+  background-position:  center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 0px 0px;
+}
+
+/* overlay leggero per leggibilità */
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* puoi aumentare o diminuire */
+  z-index: 1;
+}
+
+/* Titolo sopra lo sfondo */
+#intro h1 {
+  font-family: "sloop-script-one", sans-serif; 
+  font-weight: 400; 
+  font-style: normal;
+  color: #fff;
+  font-size: 5.8rem;
+  z-index: 2;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  #intro {
+    padding: 160px 20px 140px;
+    background-position: center 50%; /* leggero shift verso l’alto */
+  }
+
+  #intro h1 {
+    font-size: 5.6rem;
+  }
+}
+
+
+
+
+/* ------------------------------
+   DATA & LOCATION
+------------------------------ */
+
+#date-location {
+  padding: 60px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Contenitore stretto e centrato */
+#date-location .info-box {
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Titolo principale */
+#date-location h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Sottotitolo */
+.info-box h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Testi generali */
+.info-box p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Testi descrittivi */
+.venue-text {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Bottone Google Maps */
+.venue-btn {
+  display: inline-block;
+  margin: 20px 0 30px;
+  padding: 12px 22px;
+  background: #929090;
+  color: #4E513B;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.venue-btn:hover {
+  background: #e6e6e6;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  #date-location {
+    padding: 80px 20px;
+  }
+
+  #date-location h2 {
+    font-size: 2.4rem;
+  }
+
+  .info-box h3 {
+    font-size: 1.6rem;
+  }
+
+}
+
+
+/* ------------------------------
+   PROGRAMMA MINI
+------------------------------ */
+#program-mini {
+  padding: 40px 20px 80px;
+  text-align: center;
+}
+
+#program-mini h2 {
+  font-size: 2rem;
+  margin-bottom: 60px;
+  color: #ffffff;
+}
+
+/* Griglia 2 colonne */
+.program-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+
+.program-item img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.program-item .time {
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.program-item .title {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+
+
+  .program-grid {
+    max-width: 480px; /* più stretto */ gap: 20px; 
+  }
+
+  .program-item img {
+    max-width: 140px;
+  }
+}
+
+/* ------------------------------
+   DIRECTIONS SECTION
+------------------------------ */
+
+
+
+
+/* SEZIONE ALLOGGI */
+#accommodation {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.accommodation-inner {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+
+#accommodation h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.accommodation-note {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Lista hotel */
+.hotels-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hotel-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.hotel-distance {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.hotel-description {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.hotel-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background: #4E513B;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hotel-link:hover {
+  background: #3c3f2f;
+}
+
+
+/* ------------------------------
+   GENEROSITY SECTION (mobile-first)
+------------------------------ */
+#generosity {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* MOBILE: immagine a tutta altezza */
+  padding: 40px 20px; /* molto meno padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url('elements/gen.JPG');
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Mobile: niente parallax */
+  background-attachment: scroll;
+}
+
+/* Overlay leggero */
+#generosity::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.28); /* più leggero */
+  z-index: 1;
+}
+
+/* Contenuto */
+.generosity-inner {
+  
+  position: relative;
+  z-index: 2;
+
+  max-width: 420px; /* molto più piccolo */
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  
+  padding: 22px 18px; /* ridotto */
+  background: rgba(255,255,255,0.05); /* più trasparente */
+  backdrop-filter: blur(2px);
+  background-attachment: fixed;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+#generosity h2 {
+  font-family: "sloop-script-one", sans-serif; 
+  font-weight: 400; 
+  font-style: normal;
+  font-size: 3.6rem; /* più piccolo */
+  margin-bottom: 10px;
+  
+}
+
+.generosity-text {
+  font-size: 0.95rem; /* più piccolo */
+  line-height: 1.45;
+  margin-bottom: 22px;
+}
+
+.generosity-btn {
+  display: inline-block;
+  margin: 20px 0 30px;
+  padding: 12px 22px;
+  background: #929090;
+  color: #4E513B;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.generosity-btn:hover {
+  background: #e6e6e6;
+}
+
+/* ------------------------------
+   DESKTOP
+------------------------------ */
+@media (min-width: 768px) {
+
+  #generosity {
+    height: 80vh; /* desktop: meno alto, più elegante */
+    padding: 80px 20px;
+    background-attachment: fixed; /* parallax */
+    background-position: center 50%;
+  }
+
+  .generosity-inner {
+    max-width: 480px;
+    padding: 26px 22px;
+  }
+
+  #generosity h2 {
+    font-size: 4rem;
+  }
+
+  .generosity-text {
+    font-size: 1.05rem;
+  }
+}

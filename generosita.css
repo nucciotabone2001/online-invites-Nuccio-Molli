@@ -1,0 +1,137 @@
+/* ------------------------------
+   GENEROSITÀ — STILE INVERTITO
+   (bianco + verde scuro)
+------------------------------ */
+
+body {
+  margin: 0;
+  padding: 60px 20px;
+  background: #ffffff; /* sfondo chiaro */
+  color: #24341b;      /* verde scuro coerente */
+  font-family: "acumin-pro", sans-serif;
+  text-align: center;
+  background-color: #d9cda9;
+}
+
+/* Wrapper centrale */
+.generosity-page {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Titolo principale */
+h1 {
+  font-family: "sloop-script-one", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.6rem;
+  margin-bottom: 20px;
+  color: #24341b;
+}
+
+/* Testo introduttivo */
+.intro-text {
+  line-height: 1.55;
+  letter-spacing: 0.3px;
+  max-width: 340px;
+  margin: 0 auto 20px;
+  opacity: 0.9;
+}
+
+/* Titoli sezioni */
+.section-title,
+.section-text,
+.bible-verse {
+  text-align: center;
+  text-justify: inter-word;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #24341b;
+}
+
+/* Dettagli bancari */
+.bank-details {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bank-row {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(36,52,27,0.25); /* verde scuro trasparente */
+}
+
+.bank-label {
+  font-weight: 700;
+  color: #24341b;
+}
+
+.bank-value {
+  font-family: monospace;
+  font-size: 1rem;
+  margin-top: 4px;
+  display: block;
+  color: #24341b;
+}
+
+/* Pulsante copia */
+.copy-btn {
+  margin-top: 6px;
+  padding: 6px 12px;
+  background: #24341b; /* verde scuro */
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: #1c2a17;
+}
+
+/* Testo finale */
+.closing {
+  margin-top: 40px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #24341b;
+  opacity: 0.9;
+}
+
+/* Pulsante indietro */
+.rsvp-back {
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #24341b;
+  color: #24341b;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 20px auto 0;
+  transition: 0.3s ease;
+}
+
+.rsvp-back:hover {
+  background: #24341b;
+  color: #ffffff;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5.4rem;
+  }
+
+  .intro-text {
+    font-size: 1.2rem;
+  }
+
+  .closing {
+    font-size: 1.25rem;
+  }
+}

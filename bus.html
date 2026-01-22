@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/hjz0ooj.css">
+  <link rel="stylesheet" href="https://use.typekit.net/qei0ryy.css">
+
+
+  <title>Prenotazione Autobus</title>
+
+  <style>
+    /* ------------------------------
+       BUS FORM (mobile-first)
+    ------------------------------ */
+
+    body {
+      font-family: "cormorant-garamond", serif;
+      background: #24341b;
+      color: #ffffff;
+      font-family: "acumin-pro", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #bus-section {
+      padding: 60px 20px;
+      text-align: center;
+
+    }
+
+    .bus-box {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: "sloop-script-one", sans-serif; 
+      font-weight: 400; 
+      font-style: normal;
+      font-size: 3.8rem;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 14px 26px;
+      background: #ffffff;
+      color: #4E513B;
+
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .rsvp-back {
+      padding: 14px 26px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .venue-btn {
+      display: inline-block;
+      padding: 14px 26px;
+      color: #ffffff;
+      text-decoration:underline;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+      
+    }
+
+    .submit-btn:hover {
+      background: #e6e6e6;
+    }
+
+    /* Messaggio di conferma */
+    #success-message {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      h2 {
+        font-size: 6rem;
+      }
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<section id="bus-section">
+  <div class="bus-box">
+
+    <h2>Prenotazione Autobus</h2>
+    <p>ricordati di mandare la conferma al matrimonio prima di prenotare il tuo posto in autobus. <!--<a href="RSVP.html" class="venue-btn"> conferma la presenza</a>!--></p>
+    
+
+    <form id="bus-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScHZSpThX7u0ypEmsqcjT-TsWhoYdhylXHv8AXCYCQqP7WCsw/formResponse" method="POST" target="hidden_iframe" onsubmit="showMessage()">
+
+      <!-- Numero posti -->
+      <label for="posti">Numero di posti da prenotare</label>
+      <input type="number" id="posti" name="entry.2068441915" required>
+
+      <!-- Nomi persone -->
+      <label for="nomi">Nomi delle persone</label>
+      <textarea id="nomi" name="entry.1679291377" placeholder="Es: Maria Rossi, Giuseppe Bianchi..." required></textarea>
+
+      <!-- Email -->
+      <label for="email">inserisci la tua Email</label>
+      <input type="email" id="email" name="entry.779039703" required>
+
+      <!-- Telefono -->
+      <label for="telefono">Numero di telefono</label>
+      <input type="text" id="telefono" name="entry.1396188763" required>
+
+      <button type="submit" class="submit-btn">Invia prenotazione</button>
+      <button type="button" class="rsvp-back" onclick="history.back()">Indietro</button>
+    </form>
+
+    <div id="success-message">
+      Grazie! La tua prenotazione è stata inviata correttamente.
+      Ricordiamo ai gentili ospiti che la prenotazione del posto in autobus sarà confermata solo al raggiungimento del numero minimo di partecipanti.
+      Verrete contattati via email o telefono per ulteriori dettagli.
+    </div>
+
+    <!-- Iframe invisibile per evitare redirect -->
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  </div>
+</section>
+
+<script>
+  function showMessage() {
+    setTimeout(() => {
+      document.getElementById("bus-form").style.display = "none";
+      document.getElementById("success-message").style.display = "block";
+    }, 500);
+  }
+</script>
+
+</body>
+</html>

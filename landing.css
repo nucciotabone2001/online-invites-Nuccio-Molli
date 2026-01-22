@@ -1,0 +1,83 @@
+/* ------------------------------
+   LANDING PAGE — stile BUS
+------------------------------ */
+
+/* Sfondo */
+body {
+  margin: 0;
+  padding: 0;
+  background: #24341b; /* stesso colore del BUS */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "acumin-pro", sans-serif;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Contenitore */
+.landing-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Testo superiore */
+.landing-text-top p {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.landing-text-top h1 {
+  font-family: "sloop-script-one", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.4rem;
+  margin: 0 0 30px;
+  color: #ffffff;
+}
+
+/* Busta */
+.envelope {
+  width: 70%;
+  max-width: 320px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: scale(1.06);
+}
+
+/* Testo inferiore */
+.landing-text-bottom p {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+
+  .landing-text-top h1 {
+    font-size: 5rem;
+    margin-bottom: 40px;
+  }
+
+  .landing-text-top p {
+    font-size: 1.2rem;
+  }
+
+  .envelope {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .landing-text-bottom p {
+    font-size: 1.2rem;
+    margin-top: 30px;
+  }
+}

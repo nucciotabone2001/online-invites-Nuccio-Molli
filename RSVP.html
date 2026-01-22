@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="RSVP.css">
+  <script src="RSVP.js"  defer></script>
+  <link rel="stylesheet" href="https://use.typekit.net/hjz0ooj.css">
+  <link rel="stylesheet" href="https://use.typekit.net/qei0ryy.css">
+
+  <title>RSVP – Nuccio & Monica</title>
+</head>
+
+<body>
+
+  <!-- RSVP -->
+  <section id="rsvp-section">
+  <div class="rsvp-card">
+    <h2>RSVP</h2>
+    <p class="rsvp-note">Conferma la tua presenza entro il <strong>1 Aprile 2026</strong>.</p>
+
+    <form 
+      id="rsvp-form"
+      action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScVDov8dwImYzjerg8mEre5pLgiaGe4U9qBqPSMKbqLxuwuuw/formResponse"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="redirectAfterSubmit()"
+    >
+
+      <!-- Nome -->
+      <label>Nome e cognome</label>
+      <input type="text" name="entry.1072867282" id="main-name" required>
+
+      <!-- Conferma presenza -->
+      <label>Confermi la tua presenza?</label>
+      <div class="yesno-wrapper">
+        <button type="button" class="yesno-btn" data-value="Si">Sì, ci sarò</button>
+        <button type="button" class="yesno-btn" data-value="No">No, non potrò partecipare</button>
+      </div>
+      <input type="hidden" name="entry.121921660" id="presence-value">
+
+      <!-- Messaggio se NO -->
+      <p id="no-message" class="hidden no-msg">
+        Grazie per averci avvisati.  
+        Ci dispiace che tu non possa essere con noi, ma ti abbracciamo forte.
+      </p>
+
+      <div id="rsvp-extra-fields">
+
+        <!-- Allergie ospite principale -->
+        <label>Hai allergie o intolleranze?</label>
+        <label class="checkbox-line">
+        <input type="checkbox" name="entry.1182913729" id="main-allergy-check" value="Si">
+        <span>Sì</span>
+        </label>
+
+        <input type="hidden" name="entry.1182913729" id="main-allergy-value" value="No">
+
+      
+        <br> <br>
+
+
+        <textarea 
+          name="entry.139544834" 
+          id="main-allergy-text" 
+          class="hidden"
+          placeholder="Indica quali"
+        ></textarea>
+
+        <!-- Numero ospiti extra -->
+        <label>Stai confermando anche per qualcun altro? Quanti?</label>
+        <input type="number" id="guest-count" name="entry.1656234556" min="0" max="10" value="0">
+
+        <!-- Campi dinamici -->
+        <div id="guest-fields"></div>
+
+        <!-- Campo nascosto per nomi ospiti extra -->
+        <textarea name="entry.1600106275" id="all-extra-names" class="hidden"></textarea>
+
+        <!-- Campo nascosto per allergie ospiti extra -->
+        <textarea name="entry.733804388" id="all-extra-allergies" class="hidden"></textarea>
+
+        <!-- Messaggio finale -->
+        <label>Messaggio per gli sposi (opzionale)</label>
+        <textarea name="entry.355887166" rows="3"></textarea>
+
+      </div>
+
+      <div class="rsvp-actions">
+        <button type="submit" id="submit-btn" class="rsvp-submit">Invia RSVP</button>
+        <button type="button" class="rsvp-back" onclick="history.back()">Indietro</button>
+      </div>
+
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+  </div>
+  </section>
+  <script> function redirectAfterSubmit() { setTimeout(() => { window.location.href = "thankyou.html"; }, 500); } </script>
+</body>
+
+</html>
