@@ -34,19 +34,19 @@ yesNoButtons.forEach(btn => {
 /* ------------------------------
    ALLERGIE OSPITE PRINCIPALE
 ------------------------------ */
-const mainAllergyCheck = document.getElementById("main-allergy-check");
+const allergyYes = document.getElementById("allergy-yes");
+const allergyNo = document.getElementById("allergy-no");
 const mainAllergyText = document.getElementById("main-allergy-text");
-const mainAllergyValue = document.getElementById("main-allergy-value");
 
-mainAllergyCheck.addEventListener("change", () => {
-  if (mainAllergyCheck.checked) {
-    mainAllergyValue.value = "Si";
-    mainAllergyText.classList.remove("hidden");
-  } else {
-    mainAllergyValue.value = "No";
-    mainAllergyText.classList.add("hidden");
-  }
+allergyYes.addEventListener("change", () => {
+  mainAllergyText.classList.remove("hidden");
 });
+
+allergyNo.addEventListener("change", () => {
+  mainAllergyText.classList.add("hidden");
+  mainAllergyText.value = "";
+});
+
 
 /* ------------------------------
    OSPITI EXTRA DINAMICI

@@ -76,6 +76,35 @@
   margin: 12px 0 20px;
 }
 
+.yesno-allergy {
+  display: flex;
+  gap: 20px; /* distanza tra Si e No */
+  margin: 10px 0 20px;
+}
+
+.yesno-allergy label {
+  display: flex;
+  align-items: center; /* allinea checkbox e testo */
+  gap: 6px; /* distanza minima tra radio e testo */
+  cursor: pointer;
+}
+
+.yesno-allergy input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #24341b; /* colore coerente */
+  cursor: pointer;
+}
+
+.yesno-allergy span {
+  font-size: 1.1rem;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(1px); /* micro correzione estetica */
+}
+
+
+
 .yesno-btn {
   flex: 1;
   padding: 14px;

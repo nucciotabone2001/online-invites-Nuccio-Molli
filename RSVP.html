@@ -50,16 +50,18 @@
 
         <!-- Allergie ospite principale -->
         <label>Hai allergie o intolleranze?</label>
-        <label class="checkbox-line">
-        <input type="checkbox" name="entry.1182913729" id="main-allergy-check" value="Si">
-        <span>Sì</span>
-        </label>
 
-        <input type="hidden" name="entry.1182913729" id="main-allergy-value" value="No">
+        <div class="yesno-allergy">
+          <label>
+          <input type="radio" name="entry.1182913729" value="Si" id="allergy-yes">
+          <span>Si</span>
+          </label>
 
-      
-        <br> <br>
-
+          <label>
+            <input type="radio" name="entry.1182913729" value="No" id="allergy-no" checked>
+            <span>No</span>
+          </label>
+        </div>
 
         <textarea 
           name="entry.139544834" 
@@ -67,6 +69,7 @@
           class="hidden"
           placeholder="Indica quali"
         ></textarea>
+
 
         <!-- Numero ospiti extra -->
         <label>Stai confermando anche per qualcun altro? Quanti?</label>

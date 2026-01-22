@@ -78,6 +78,8 @@ body {
 
 #main-nav.open {
   display: flex;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
 }
 
 /* BACK LINK (solo pagine secondarie) */
@@ -481,3 +483,7 @@ footer {
   font-size: 0.9rem;
 }
 
+/*git add .
+git commit -m "aggiornamento sito"
+git push
+*/
