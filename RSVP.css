@@ -92,7 +92,7 @@
 .yesno-allergy input[type="radio"] {
   width: 18px;
   height: 18px;
-  accent-color: #24341b; /* colore coerente */
+  accent-color: #000000; /* colore coerente */
   cursor: pointer;
 }
 

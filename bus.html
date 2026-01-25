@@ -129,7 +129,7 @@
 
     <h2>Prenotazione Autobus</h2>
     <p>da Gela al luogo della cerimonia</p><br>
-    <p>ricordati di mandare la conferma al matrimonio prima di prenotare il tuo posto in autobus. <!--<a href="RSVP.html" class="venue-btn"> conferma la presenza</a>!--></p>
+    <p class="info">ricordati di mandare la conferma al matrimonio prima di prenotare il tuo posto in autobus. <!--<a href="RSVP.html" class="venue-btn"> conferma la presenza</a>!--></p>
     
 
     <form id="bus-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScHZSpThX7u0ypEmsqcjT-TsWhoYdhylXHv8AXCYCQqP7WCsw/formResponse" method="POST" target="hidden_iframe" onsubmit="showMessage()">
@@ -170,6 +170,8 @@
   function showMessage() {
     setTimeout(() => {
       document.getElementById("bus-form").style.display = "none";
+      const infoEl = document.querySelector('.info');
+      if (infoEl) infoEl.style.display = 'none';
       document.getElementById("success-message").style.display = "block";
     }, 500);
   }

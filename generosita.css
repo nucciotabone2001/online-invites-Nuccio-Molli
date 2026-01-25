@@ -104,6 +104,23 @@ h1 {
   background: #1c2a17;
 }
 
+.paypal-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 22px;
+  background-color: #003087; /* blu PayPal */
+  color: white;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.paypal-button:hover {
+  background-color: #001f5a;
+}
+
+
 /* Testo finale */
 .closing {
   margin-top: 40px;
