@@ -1,6 +1,6 @@
-/* ------------------------------
-   BOTTONI SI / NO
------------------------------- */
+/* =====================================================
+   YES / NO PRESENZA
+===================================================== */
 const yesNoButtons = document.querySelectorAll(".yesno-btn");
 const presenceInput = document.getElementById("presence-value");
 const extraFields = document.getElementById("rsvp-extra-fields");
@@ -10,7 +10,6 @@ const submitBtn = document.getElementById("submit-btn");
 yesNoButtons.forEach(btn => {
   btn.addEventListener("click", () => {
 
-    // Rimuovi selezione da tutti
     yesNoButtons.forEach(b => b.classList.remove("selected"));
     btn.classList.add("selected");
 
@@ -25,15 +24,15 @@ yesNoButtons.forEach(btn => {
       noMessage.classList.add("hidden");
     }
 
-    // Il submit DEVE essere sempre attivo
     submitBtn.disabled = false;
     submitBtn.style.opacity = "1";
   });
 });
 
-/* ------------------------------
+
+/* =====================================================
    ALLERGIE OSPITE PRINCIPALE
------------------------------- */
+===================================================== */
 const allergyYes = document.getElementById("allergy-yes");
 const allergyNo = document.getElementById("allergy-no");
 const mainAllergyText = document.getElementById("main-allergy-text");
@@ -48,9 +47,9 @@ allergyNo.addEventListener("change", () => {
 });
 
 
-/* ------------------------------
+/* =====================================================
    OSPITI EXTRA DINAMICI
------------------------------- */
+===================================================== */
 const guestCount = document.getElementById("guest-count");
 const guestFields = document.getElementById("guest-fields");
 const allExtraNames = document.getElementById("all-extra-names");
@@ -59,7 +58,7 @@ const allExtraAllergies = document.getElementById("all-extra-allergies");
 guestCount.addEventListener("input", generateGuestFields);
 
 function generateGuestFields() {
-  const count = parseInt(guestCount.value);
+  const count = parseInt(guestCount.value) || 0;
   guestFields.innerHTML = "";
 
   for (let i = 1; i <= count; i++) {
@@ -82,22 +81,61 @@ function generateGuestFields() {
     guestFields.appendChild(wrapper);
   }
 
-  // Allergie dinamiche
   document.querySelectorAll(".guest-allergy-check").forEach((check, index) => {
     check.addEventListener("change", () => {
       const text = document.querySelectorAll(".guest-allergy-text")[index];
       text.classList.toggle("hidden", !check.checked);
+      if (!check.checked) text.value = "";
     });
   });
 }
 
-/* ------------------------------
-   PRIMA DELL'INVIO → COMPILA I CAMPI NASCOSTI
------------------------------- */
-document.getElementById("rsvp-form").addEventListener("submit", () => {
-  const names = [...document.querySelectorAll(".guest-name")].map(i => i.value.trim()).join("\n");
-  const allergies = [...document.querySelectorAll(".guest-allergy-text")].map(i => i.value.trim()).join("\n");
+
+/* =====================================================
+   SUBMIT SICURO → PREPARA I DATI, POI INVIA
+===================================================== */
+const form = document.getElementById("rsvp-form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // 🔴 BLOCCA SUBMIT NATIVO
+
+  // Raccogli nomi ospiti extra
+  const names = [...document.querySelectorAll(".guest-name")]
+    .map(i => i.value.trim())
+    .filter(Boolean)
+    .join("\n");
+
+  // Raccogli allergie ospiti extra
+  const allergies = [...document.querySelectorAll(".guest-allergy-text")]
+    .map(i => i.value.trim())
+    .filter(Boolean)
+    .join("\n");
 
   allExtraNames.value = names;
   allExtraAllergies.value = allergies;
+
+  // LOG LOCALE DEL TENTATIVO (salvavita)
+  try {
+    localStorage.setItem(
+      "rsvp_" + Date.now(),
+      JSON.stringify({
+        nome: document.querySelector("input[name='entry.NOME']")?.value || "sconosciuto",
+        presenza: presenceInput.value,
+        time: new Date().toISOString()
+      })
+    );
+  } catch (err) {
+    // se localStorage è pieno o disabilitato, ignora
+  }
+
+  // Blocca doppio submit
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = "0.6";
+  submitBtn.innerText = "Invio in corso...";
+
+  form.submit(); 
+  // Piccolo delay per Safari / mobile (stabilità)
+  setTimeout(() => {
+    window.location.href = "thankyou.html"; // REDIRECT IMMEDIATO (evita doppio submit)
+  }, 800);
 });
