@@ -12,6 +12,28 @@
 
 
   <title>RSVP – Nuccio & Monica</title>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyA4HO8iZteCJaMiYr2XXm7-soUGztwiCc4",
+  authDomain: "inviti-matrimonio.firebaseapp.com",
+  projectId: "inviti-matrimonio",
+  storageBucket: "inviti-matrimonio.firebasestorage.app",
+  messagingSenderId: "990397184013",
+  appId: "1:990397184013:web:1e322d256f20b1a9ba3d44",
+  measurementId: "G-EC9ZLW37HT"
+};
+
+  const app = initializeApp(firebaseConfig);
+  window.db = getFirestore(app);
+  window.addDoc = addDoc;
+  window.collection = collection;
+</script>
+
+</script>
+
 </head>
 
 
@@ -109,7 +131,7 @@
 
         <!-- Messaggio -->
         <label>Messaggio per gli sposi (opzionale)</label>
-        <textarea name="Messaggio per gli sposi" rows="3"></textarea>
+        <textarea id="message" name="Messaggio per gli sposi" rows="3"></textarea>
 
 
       </div>

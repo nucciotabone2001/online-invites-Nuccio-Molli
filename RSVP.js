@@ -67,14 +67,11 @@ function generateGuestFields() {
 
     wrapper.innerHTML = `
       <h4>Ospite aggiuntivo ${i}</h4>
-
       <input type="text" class="guest-name" placeholder="Nome e cognome">
-
       <label class="checkbox-line">
         <input type="checkbox" class="guest-allergy-check">
         <span>Ha allergie o intolleranze?</span>
       </label>
-
       <textarea class="guest-allergy-text hidden" placeholder="Indica quali"></textarea>
     `;
 
@@ -92,50 +89,78 @@ function generateGuestFields() {
 
 
 /* =====================================================
-   SUBMIT SICURO → PREPARA I DATI, POI INVIA
+   SUBMIT SICURO → FIRESTORE PRIMA, POI GOOGLE FORM
 ===================================================== */
 const form = document.getElementById("rsvp-form");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); // 🔴 BLOCCA SUBMIT NATIVO
+form.addEventListener("submit", async (e) => {
 
-  // Raccogli nomi ospiti extra
+  e.preventDefault();
+
   const names = [...document.querySelectorAll(".guest-name")]
     .map(i => i.value.trim())
-    .filter(Boolean)
-    .join("\n");
+    .filter(Boolean);
 
-  // Raccogli allergie ospiti extra
   const allergies = [...document.querySelectorAll(".guest-allergy-text")]
     .map(i => i.value.trim())
-    .filter(Boolean)
-    .join("\n");
+    .filter(Boolean);
 
-  allExtraNames.value = names;
-  allExtraAllergies.value = allergies;
+  allExtraNames.value = names.join("\n");
+  allExtraAllergies.value = allergies.join("\n");
+  
+  const payload = {
 
-  // LOG LOCALE DEL TENTATIVO (salvavita)
+  nome: document.querySelector("input[name='Nome e cognome']")?.value || "",
+
+  presenza: presenceInput.value,
+
+  allergiePrincipali: mainAllergyText.value || "",
+
+  ospitiExtra: names.map((name, i) => ({
+    nome: name,
+    allergie: allergies[i] || ""
+  })),
+
+  numeroOspitiExtra: parseInt(guestCount.value) || 0,
+
+  messaggio: document.getElementById("message")?.value || "",
+
+  createdAt: new Date().toISOString(),
+  userAgent: navigator.userAgent
+};
+
+  
   try {
+
+    // LOG LOCALE (backup)
     localStorage.setItem(
       "rsvp_" + Date.now(),
-      JSON.stringify({
-        nome: document.querySelector("input[name='entry.NOME']")?.value || "sconosciuto",
-        presenza: presenceInput.value,
-        time: new Date().toISOString()
-      })
+      JSON.stringify(payload)
     );
-  } catch (err) {
-    // se localStorage è pieno o disabilitato, ignora
+
+    // 🔥 SALVATAGGIO FIRESTORE
+    await addDoc(collection(db, "rsvps"), payload);
+
+    // Dopo Firestore OK → invia al Google Form
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.6";
+    submitBtn.innerText = "Invio in corso...";
+
+    form.submit();
+
+    setTimeout(() => {
+      window.location.href = "thankyou.html";
+    }, 600);
+
+  } catch(err) {
+
+    console.error("Firestore error:", err);
+
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = "1";
+    submitBtn.innerText = "Riprova";
+
+    alert("Errore di connessione. Riprova.");
   }
 
-  // Blocca doppio submit
-  submitBtn.disabled = true;
-  submitBtn.style.opacity = "0.6";
-  submitBtn.innerText = "Invio in corso...";
-
-  form.submit(); 
-  // Piccolo delay per Safari / mobile (stabilità)
-  setTimeout(() => {
-    window.location.href = "thankyou.html"; // REDIRECT IMMEDIATO (evita doppio submit)
-  }, 800);
 });
